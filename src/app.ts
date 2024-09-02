@@ -5,6 +5,7 @@ import { MongoDatabase } from "./data/init";
 import { IncidentModel } from "./data/models/incident.model";
 import { AppRoutes } from "./presentation/controllers/routes";
 
+
 const app = express();
 app.use(express.json());
 app.use(AppRoutes.routes);

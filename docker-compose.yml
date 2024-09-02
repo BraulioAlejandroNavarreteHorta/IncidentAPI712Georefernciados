@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   incident-api:
-    build: .
+    image: braulionavarrete/incident_api:latest
     container_name: incident-api
     ports:
       - "3000:3000"

@@ -1,0 +1,22 @@
+name: Docker Build & Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone code
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        run: docker login -u "${{ secrets.DOCKER_USERNAME }}"" -p "${{ secrets.DOCKER_PASSWORD }}"
+
+      - name: Build Docker image
+        run: docker build -t braulionavarrete/incident_api:${{ github.sha }} .
+
+      - name: Push Docker image
+        run: docker push braulionavarrete/incident_api:${{ github.sha }}

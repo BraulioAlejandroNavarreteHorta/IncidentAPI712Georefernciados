@@ -4,6 +4,7 @@ import { envs } from "./config/envs.plugin";
 import { MongoDatabase } from "./data/init";
 import { IncidentModel } from "./data/models/incident.model";
 import { AppRoutes } from "./presentation/controllers/routes";
+import { emailJob } from "./domain/jobs/email.job";
 
 
 const app = express();
@@ -34,4 +35,5 @@ app.post("/", async (req, res) => {
 
 app.listen(envs.PORT, ()=>{
     console.log(`Servidor corriendo en el puerto ${envs.PORT}`)
+    emailJob();
 });

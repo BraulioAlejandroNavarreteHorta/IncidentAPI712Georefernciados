@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { IncidentModel } from '../../../data/models/incident.model';
+import { EmailService } from '../../../domain/services/email.service';
 
 export class IncidentController {
 
@@ -22,6 +23,12 @@ export class IncidentController {
                 lat,
                 lng
             });
+            // const emailService = new EmailService();
+            // await emailService.sendEmail({
+            //     to:"braulioalejandronavarretehorta@gmail.com",
+            //     subject:`Incidente:${newIncident.title}`,
+            //     htmlBody:`<h1>${newIncident.description}</h1>`,
+            // });
             res.json(newIncident);
         } catch (error) {
             return res.status(500).json({ message: "Error al crear el incidente" })
